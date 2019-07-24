@@ -1,9 +1,9 @@
 import os
-for filename in os.listdir("../InstanciasSAT/"):
+for filename in os.listdir("InstanciasSAT/"):
     print('Translating file: ' + filename)
     zincified = ''
     variables = []
-    readpath = '../InstanciasSAT/' + filename
+    readpath = 'InstanciasSAT/' + filename
     enunciado = open(readpath, "r")
     for linea in enunciado:
         line = linea.lstrip()
@@ -47,7 +47,7 @@ for filename in os.listdir("../InstanciasSAT/"):
     for i in range(0, len(variables), 2):
         zincified += '"\\n' + str(variables[i]) + '=", show(' + str(variables[i]) + '), "\\t -' + str(variables[i]) + '=", show(n_' + str(variables[i]) + '), '
     zincified += '];'
-    writepath = '../InstanciasMiniZinc/' + str(filename[:-4]) + '.mzn'
+    writepath = 'InstanciasMiniZinc/' + str(filename[:-4]) + '.mzn'
     zincfile = open(writepath, "w")
     zincfile.write(zincified)
     zincfile.close
